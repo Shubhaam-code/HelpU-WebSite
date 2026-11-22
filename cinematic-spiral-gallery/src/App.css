@@ -41,6 +41,16 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 1rem;
+}
+
+.navbar-center-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 1 auto;
+  transform: translateX(-16px);
 }
 
 .navbar-brand {
@@ -221,12 +231,84 @@
   margin: 0;
 }
 
+/* Mid-Section Transition Headline (Between Carousel & Phone Trio) */
+.showcase-transition-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin: 1.8rem auto 0.25rem auto;
+  padding: 0 1.25rem;
+  max-width: 780px;
+}
+
+.showcase-transition-title {
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0 0.35em;
+  font-size: clamp(1.75rem, 3.6vw, 2.45rem);
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
+  margin: 0;
+  text-align: center;
+}
+
+.title-accent-upgraded {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.showcase-rotating-accent {
+  display: inline-flex;
+  align-items: baseline;
+  vertical-align: baseline;
+  color: #0284c7;
+  font-weight: 800;
+}
+
+.showcase-rotating-word-masked {
+  overflow: hidden;
+  display: inline-flex;
+  vertical-align: baseline;
+  padding-bottom: 0.14em;
+  line-height: 1.15;
+}
+
+.showcase-rotating-letter {
+  display: inline-block;
+  color: #0284c7;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+.showcase-transition-subtitle {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  color: #1e293b;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0.45rem 0 0 0;
+  line-height: 1.4;
+}
+
+@media (max-width: 640px) {
+  .showcase-transition-header {
+    margin: 1.2rem auto 0.15rem auto;
+    padding: 0 1rem;
+  }
+}
+
 /* Services Showcase Section (Directly underneath 3D Rotating Circle) */
 .services-showcase-section {
   width: 100%;
   position: relative;
   z-index: 10;
-  margin-top: 1.5rem;
+  margin-top: 0.5rem;
   padding-bottom: 2rem;
 }
 
@@ -288,12 +370,7 @@
 }
 
 .blob-warm-accent {
-  width: 500px;
-  height: 500px;
-  bottom: 10%;
-  right: 15%;
-  background: radial-gradient(circle, rgba(254, 243, 199, 0.5) 0%, rgba(251, 191, 36, 0.15) 50%, transparent 70%);
-  animation: float-blob-4 16s ease-in-out infinite alternate;
+  display: none !important;
 }
 
 .motion-grid-overlay {
@@ -538,38 +615,55 @@
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   .navbar-container {
-    padding: 0.5rem 1rem;
+    padding: 0.42rem 0.85rem;
+    height: 52px;
+    display: flex;
+    align-items: center;
+  }
+
+  .navbar-content {
+    width: 100%;
+    gap: 0.4rem;
+    flex-wrap: nowrap;
+  }
+
+  .navbar-center-nav {
+    flex: 0 1 auto;
+    margin: 0;
+    transform: translateX(-14px);
   }
 
   .navbar-brand {
     gap: 0.15rem;
+    flex-shrink: 0;
   }
 
   .navbar-h-icon {
-    height: 36px;
+    height: 32px;
   }
 
   .navbar-helpu-text {
-    height: 23px;
+    height: 21px;
   }
 
   .navbar-download-group {
-    padding: 0.32rem 0.65rem 0.28rem 0.65rem;
-    border-radius: 14px;
-    gap: 0.16rem;
+    padding: 0;
+    border-radius: 0;
+    gap: 0.1rem;
+    flex-shrink: 0;
   }
 
   .download-title {
-    font-size: 0.64rem;
+    font-size: 0.58rem;
   }
 
   .hero-section {
-    padding: 4.2rem 0.75rem 1rem 0.75rem;
+    padding: 4.8rem 0.75rem 1rem 0.75rem;
     min-height: 100vh;
   }
 
   .hero-text-header {
-    margin-top: 0.2rem;
+    margin-top: 0.35rem;
     margin-bottom: 0.25rem;
     padding: 0 0.5rem;
   }
@@ -600,28 +694,47 @@
 
 @media (max-width: 480px) {
   .navbar-container {
-    padding: 0.45rem 0.8rem;
+    padding: 0.35rem 0.6rem;
+    height: 48px;
+  }
+
+  .navbar-content {
+    gap: 0.25rem;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .navbar-brand {
+    gap: 0.1rem;
+    flex-shrink: 0;
   }
 
   .navbar-h-icon {
-    height: 32px;
+    height: 27px;
   }
 
   .navbar-helpu-text {
-    height: 20px;
+    height: 17px;
+  }
+
+  .navbar-center-nav {
+    flex: 0 1 auto;
+    margin: 0;
+    transform: translateX(-12px);
   }
 
   .navbar-download-group {
     padding: 0;
     border-radius: 0;
-    gap: 0.16rem;
+    gap: 0.08rem;
     background: transparent;
     border: none;
     box-shadow: none;
+    flex-shrink: 0;
   }
 
   .download-title {
-    font-size: 0.62rem;
+    font-size: 0.54rem;
     color: #0f172a;
     font-weight: 800;
   }
@@ -632,7 +745,7 @@
   }
 
   .hero-text-header {
-    margin-top: 0.1rem;
+    margin-top: 0.35rem;
     margin-bottom: 0.15rem;
   }
 
