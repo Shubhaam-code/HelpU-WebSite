@@ -9,7 +9,12 @@ export default function Footer14() {
 
   const handleDownload = (e) => {
     if (e && e.preventDefault) e.preventDefault();
-    redirectToInstallPage();
+    const link = document.createElement('a');
+    link.href = '/app/app-debug.apk';
+    link.download = 'HelpU.apk';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const navLinks = [
@@ -17,7 +22,7 @@ export default function Footer14() {
     { label: 'PoolMate', href: '#services', target: '_self' },
     { label: 'FFCS Mate', href: '#services', target: '_self' },
     { label: 'How It Works', href: '#install-guide', target: '_self' },
-    { label: 'Install App', href: INSTALL_APP_URL, onClick: handleDownload },
+    { label: 'Download APK', href: '/app/app-debug.apk', onClick: handleDownload },
     { label: 'Privacy', href: '#privacy', target: '_self' }
   ];
 
