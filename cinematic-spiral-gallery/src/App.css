@@ -67,7 +67,7 @@
 }
 
 .navbar-h-icon {
-  height: 44px;
+  height: 38px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -75,7 +75,7 @@
 }
 
 .navbar-helpu-text {
-  height: 34px;
+  height: 28px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -673,11 +673,11 @@
   }
 
   .navbar-h-icon {
-    height: 32px;
+    height: 25px;
   }
 
   .navbar-helpu-text {
-    height: 21px;
+    height: 16.5px;
   }
 
   .navbar-download-group {
@@ -770,11 +770,11 @@
   }
 
   .navbar-h-icon {
-    height: 27px;
+    height: 20px;
   }
 
   .navbar-helpu-text {
-    height: 17px;
+    height: 13px;
   }
 
   .navbar-center-nav {
