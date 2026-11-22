@@ -521,7 +521,7 @@
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
 }
 
-/* Mascot Sitting on Top of PWA Box */
+/* Mascot Sitting on Top of PWA Box (Left Aligned) */
 .pwa-card-mascot-wrapper {
   position: absolute;
   bottom: 100%;
@@ -542,17 +542,43 @@
   display: block;
   object-fit: contain;
   filter: drop-shadow(0 10px 22px rgba(2, 132, 199, 0.16));
-  animation: pwaMascotFloat 3.8s ease-in-out infinite;
+  animation: mascotFloatSlow 6.5s ease-in-out infinite;
   user-select: none;
   -webkit-user-drag: none;
 }
 
-@keyframes pwaMascotFloat {
+/* Mascot Sitting on Top of Android APK Box (Right Aligned, Tightly Touching) */
+.apk-card-mascot-wrapper {
+  position: absolute;
+  bottom: 100%;
+  right: 20px;
+  transform: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 5;
+  margin-bottom: -6px;
+}
+
+.apk-card-mascot-img {
+  width: 195px;
+  max-width: 82vw;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 22px rgba(22, 163, 74, 0.15));
+  animation: mascotFloatSlow 6.5s ease-in-out infinite 0.75s;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@keyframes mascotFloatSlow {
   0%, 100% {
     transform: translateY(0px);
   }
   50% {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
   }
 }
 
@@ -920,8 +946,12 @@
 @media (max-width: 768px) {
   .install-options-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
+    gap: 1.25rem;
     margin-top: 7.6rem;
+  }
+
+  .option-card-apk {
+    margin-top: 6.8rem;
   }
 
   .pwa-card-mascot-wrapper {
@@ -930,8 +960,18 @@
   }
 
   .pwa-card-mascot-img {
-    width: 165px;
+    width: 160px;
     filter: drop-shadow(0 8px 18px rgba(2, 132, 199, 0.14));
+  }
+
+  .apk-card-mascot-wrapper {
+    right: 16px;
+    transform: none;
+  }
+
+  .apk-card-mascot-img {
+    width: 160px;
+    filter: drop-shadow(0 8px 18px rgba(22, 163, 74, 0.14));
   }
 
   .options-section-title {
@@ -1003,6 +1043,11 @@
 @media (max-width: 480px) {
   .install-options-grid {
     margin-top: 7.2rem;
+    gap: 1rem;
+  }
+
+  .option-card-apk {
+    margin-top: 5.8rem;
   }
 
   .pwa-card-mascot-wrapper {
@@ -1013,6 +1058,16 @@
   .pwa-card-mascot-img {
     width: 135px;
     filter: drop-shadow(0 6px 14px rgba(2, 132, 199, 0.12));
+  }
+
+  .apk-card-mascot-wrapper {
+    right: 12px;
+    transform: none;
+  }
+
+  .apk-card-mascot-img {
+    width: 135px;
+    filter: drop-shadow(0 6px 14px rgba(22, 163, 74, 0.12));
   }
 }
 

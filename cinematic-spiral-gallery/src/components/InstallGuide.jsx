@@ -335,6 +335,19 @@ export default function InstallGuide() {
 
           {/* Option B: Download Android APK Card */}
           <div className="install-option-card option-card-apk">
+            {/* Mascot Peeking / Sitting on Top of Android APK Box (Right Aligned, Touching Edge) */}
+            <div className="apk-card-mascot-wrapper" aria-hidden="true">
+              <picture>
+                <source type="image/webp" srcSet="/apk-students-study.webp" />
+                <img
+                  src="/apk-students-study.png"
+                  alt="HelpU Students Studying"
+                  className="apk-card-mascot-img"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+
             <div className="option-card-header">
               <div className="option-icon-box icon-box-apk">
                 <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
