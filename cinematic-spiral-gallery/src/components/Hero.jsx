@@ -30,7 +30,7 @@ export default function Hero({ images, config }) {
   }));
 
   const responsiveCardWidth = isSmallMobile ? 122 : isMobile ? 138 : config.cardWidth;
-  const responsiveHeight = isSmallMobile ? '430px' : isMobile ? '470px' : '580px';
+  const responsiveHeight = isSmallMobile ? '370px' : isMobile ? '410px' : '580px';
   const responsivePerspective = isSmallMobile ? 1350 : isMobile ? 1550 : 2300;
 
   return (
@@ -70,6 +70,19 @@ export default function Hero({ images, config }) {
         <p className="hero-campus-tagline">
           Study. Connect. Stay Updated.
         </p>
+      </div>
+
+      {/* Hero Students Animation - As shown in design mockup */}
+      <div className="hero-students-wrapper" aria-hidden="true">
+        <picture>
+          <source type="image/webp" srcSet="/students-animation.webp" />
+          <img
+            src="/students-animation.gif"
+            alt="HelpU Campus Students"
+            className="hero-students-img"
+            loading="eager"
+          />
+        </picture>
       </div>
 
       {/* 1. Centerpiece: CircularCarousel 3D Rotating Exhibition */}

@@ -231,6 +231,39 @@
   margin: 0;
 }
 
+/* Animated Students Mascot Illustration */
+.hero-students-wrapper {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  margin-top: 0.65rem;
+  margin-bottom: -115px;
+  pointer-events: none;
+  width: 100%;
+}
+
+.hero-students-img {
+  width: min(440px, 86vw);
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 14px 28px rgba(2, 132, 199, 0.16));
+  animation: heroStudentsFloat 4.2s ease-in-out infinite;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@keyframes heroStudentsFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
 /* Mid-Section Transition Headline (Between Carousel & Phone Trio) */
 .showcase-transition-header {
   position: relative;
@@ -678,10 +711,20 @@
     font-size: 0.95rem;
   }
 
+  .hero-students-wrapper {
+    margin-top: 0.35rem;
+    margin-bottom: -55px;
+  }
+
+  .hero-students-img {
+    width: min(340px, 84vw);
+    filter: drop-shadow(0 10px 20px rgba(2, 132, 199, 0.14));
+  }
+
   .spiral-viewport-container {
-    height: 440px;
+    height: 410px;
     max-width: 100%;
-    margin-top: -0.65rem;
+    margin-top: -0.5rem;
   }
 
   .download-toast {
@@ -759,8 +802,18 @@
     font-size: 0.85rem;
   }
 
+  .hero-students-wrapper {
+    margin-top: 0.2rem;
+    margin-bottom: -42px;
+  }
+
+  .hero-students-img {
+    width: min(290px, 82vw);
+    filter: drop-shadow(0 8px 16px rgba(2, 132, 199, 0.12));
+  }
+
   .spiral-viewport-container {
-    height: 390px;
-    margin-top: -0.85rem;
+    height: 370px;
+    margin-top: -0.5rem;
   }
 }
