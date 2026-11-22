@@ -503,7 +503,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   align-items: stretch;
-  margin-top: 5.8rem;
+  margin-top: 8.5rem;
 }
 
 .install-option-card {
@@ -921,7 +921,7 @@
   .install-options-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
-    margin-top: 5.2rem;
+    margin-top: 7.6rem;
   }
 
   .pwa-card-mascot-wrapper {
@@ -1002,7 +1002,7 @@
 
 @media (max-width: 480px) {
   .install-options-grid {
-    margin-top: 4.8rem;
+    margin-top: 7.2rem;
   }
 
   .pwa-card-mascot-wrapper {
@@ -1011,7 +1011,7 @@
   }
 
   .pwa-card-mascot-img {
-    width: 148px;
+    width: 135px;
     filter: drop-shadow(0 6px 14px rgba(2, 132, 199, 0.12));
   }
 }
