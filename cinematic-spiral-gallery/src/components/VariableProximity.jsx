@@ -315,12 +315,12 @@ const VariableProximity = forwardRef((props, ref) => {
       schedule();
     };
 
+    const isTouchDevice = typeof window !== 'undefined' && ('ontouchstart' in window || navigator.maxTouchPoints > 0);
     const root = document.documentElement;
     window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: true });
-    window.addEventListener('touchend', handleLeave);
-    window.addEventListener('touchcancel', handleLeave);
-    window.addEventListener('scroll', schedule, { capture: true, passive: true });
+    if (!isTouchDevice) {
+      window.addEventListener('scroll', schedule, { capture: true, passive: true });
+    }
     window.addEventListener('resize', relayout);
     root.addEventListener('mouseleave', handleLeave);
 

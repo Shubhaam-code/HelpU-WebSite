@@ -1,8 +1,44 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import BorderGlow from './BorderGlow.jsx';
 import VariableProximity from './VariableProximity.jsx';
 import { usePwaInstall } from '../hooks/usePwaInstall.js';
 import './InstallGuide.css';
+
+function LazyVideo({ src, className, ...props }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {});
+        } else {
+          video.pause();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(video);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <video
+      ref={videoRef}
+      src={src}
+      loop
+      muted
+      playsInline
+      preload="none"
+      className={className}
+      {...props}
+    />
+  );
+}
 
 export default function InstallGuide() {
   const [apkDownloading, setApkDownloading] = useState(false);
@@ -34,12 +70,8 @@ export default function InstallGuide() {
         <div className="guide-card guide-steps-card">
           <div className="guide-card-header">
             <span className="guide-badge">
-              <video
+              <LazyVideo
                 src="/shooting-star.mp4"
-                autoPlay
-                loop
-                muted
-                playsInline
                 className="badge-star-video"
               />
               How It Works?
@@ -57,12 +89,8 @@ export default function InstallGuide() {
             <div className="step-item">
               <div className="step-circle-badge">1</div>
               <div className="step-icon-wrap">
-                <video
+                <LazyVideo
                   src="/step-website.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
                   className="step-animation-video"
                 />
               </div>
@@ -76,12 +104,8 @@ export default function InstallGuide() {
             <div className="step-item">
               <div className="step-circle-badge">2</div>
               <div className="step-icon-wrap">
-                <video
+                <LazyVideo
                   src="/step-install.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
                   className="step-animation-video"
                 />
               </div>
@@ -95,12 +119,8 @@ export default function InstallGuide() {
             <div className="step-item">
               <div className="step-circle-badge">3</div>
               <div className="step-icon-wrap">
-                <video
+                <LazyVideo
                   src="/step-home.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
                   className="step-animation-video"
                 />
               </div>
@@ -115,12 +135,8 @@ export default function InstallGuide() {
           <div className="guide-card-header">
             <div className="devices-header-title">
               <div className="header-thumb-wrap">
-                <video
+                <LazyVideo
                   src="/thumb-up.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
                   className="header-thumb-video"
                 />
               </div>
@@ -365,12 +381,8 @@ export default function InstallGuide() {
       <div className="install-cta-banner">
         <div className="cta-banner-left">
           <div className="cta-bell-circle">
-            <video
+            <LazyVideo
               src="/notification.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
               className="cta-notification-video"
             />
           </div>

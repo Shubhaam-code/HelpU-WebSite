@@ -111,6 +111,7 @@ const BorderGlow = ({
   }, [getCenterOfElement]);
 
   const handlePointerMove = useCallback((e) => {
+    if (e.pointerType === 'touch') return; // Bypass touch moves on mobile to prevent layout thrashing
     const card = cardRef.current;
     if (!card) return;
 
