@@ -39,24 +39,26 @@ export default function App() {
         <Scanner
           color1="#0284c7"
           color2="#38bdf8"
-          color3="#1d4ed8"
-          speed={isMobile ? 0.3 : 0.4}
-          sweepSpeed={isMobile ? 0.18 : 0.22}
-          sweepWidth={1.8}
-          trail={0.55}
-          ripple={0.22}
-          bandDensity={isMobile ? 9 : 11}
-          glow={isMobile ? 0.45 : 0.55}
+          color3="#0284c7"
+          speed={0.35}
+          sweepSpeed={0.2}
+          sweepWidth={2.0}
+          trail={0.65}
+          ripple={0.25}
+          bandDensity={isMobile ? 8 : 11}
+          lineWidth={isMobile ? 2.4 : 1.4}
+          glow={isMobile ? 0.75 : 0.55}
+          brightness={isMobile ? 1.6 : 1.2}
+          vignette={isMobile ? 0.05 : 0.25}
           scanDirection="vertical"
-          colorSpread={0.6}
-          scanline={!isMobile}
-          scanlineIntensity={0.35}
-          grain={!isMobile}
+          colorSpread={0.65}
+          scanline={false}
+          grain={false}
           mouseInteraction={!isMobile}
           clickEffect={isMobile ? 'none' : 'ping'}
-          dpr={isMobile ? 0.65 : 1.25}
+          dpr={isMobile ? 1.0 : 1.25}
           lightMode
-          opacity={0.8}
+          opacity={0.95}
         />
       </div>
 
