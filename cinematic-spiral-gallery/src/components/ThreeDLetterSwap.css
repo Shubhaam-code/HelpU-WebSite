@@ -1,0 +1,94 @@
+/* ==========================================================================
+   React Bits Pro: 3D Letter Swap Kinetic Typography
+   ========================================================================== */
+
+.three-d-letter-swap-root {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  perspective: 1200px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  vertical-align: baseline;
+  text-align: center;
+}
+
+.three-d-word {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+  perspective: 1000px;
+}
+
+.three-d-space {
+  display: inline-block;
+  width: 0.28em;
+  pointer-events: none;
+}
+
+.three-d-letter-wrapper {
+  display: inline-block;
+  position: relative;
+  perspective: 1000px;
+  vertical-align: baseline;
+}
+
+.three-d-letter-cube {
+  display: inline-block;
+  position: relative;
+  transform-style: preserve-3d;
+  will-change: transform;
+  vertical-align: baseline;
+}
+
+/* Front Face: MUST BE RELATIVE to determine natural character width & height! */
+.three-d-face--front {
+  position: relative !important;
+  display: inline-block !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0.5em);
+  line-height: inherit;
+}
+
+/* Second Face: Absolutely positioned to fit the exact bounds of the front face */
+.three-d-face--second {
+  position: absolute !important;
+  inset: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  line-height: inherit;
+}
+
+/* Typography Styling Helpers */
+.three-d-dark-text {
+  color: #0f172a;
+}
+
+.three-d-blue-gradient {
+  color: #0284c7;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Accessibility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

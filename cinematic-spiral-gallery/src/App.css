@@ -1,0 +1,653 @@
+/* ==========================================================================
+   HelpU Soft Blue (#F2F5FE) Fluid Atmosphere & Horizontal Brand Layout
+   ========================================================================== */
+
+.cinematic-app {
+  min-height: 100vh;
+  position: relative;
+  background-color: #f2f5fe;
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
+   A. NAVIGATION & HORIZONTAL LOGO
+   -------------------------------------------------------------------------- */
+.navbar-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0.85rem 2.2rem;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: none;
+  box-shadow: none;
+  transition: background-color 0.25s ease, backdrop-filter 0.25s ease, box-shadow 0.25s ease, border-bottom 0.25s ease;
+}
+
+.navbar-container.is-scrolled {
+  background: rgba(242, 245, 254, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(2, 132, 199, 0.08);
+  box-shadow: 0 4px 20px rgba(2, 132, 199, 0.06);
+}
+
+.navbar-content {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.navbar-brand:hover {
+  transform: translateY(-1px) scale(1.02);
+}
+
+.navbar-h-icon {
+  height: 44px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 8px rgba(2, 132, 199, 0.18));
+}
+
+.navbar-helpu-text {
+  height: 34px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+}
+
+/* Right Side Download Squish Switch Group (No White Box, Clean Switch on Top with Install Text Below) */
+.navbar-download-group {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+
+.navbar-download-group:hover {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  transform: translateY(-1px) scale(1.03);
+}
+
+.download-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.navbar-download-group:hover .download-title {
+  color: #000000;
+}
+
+/* Download Notification Toast */
+.download-toast {
+  position: fixed;
+  top: 85px;
+  right: 2.2rem;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #ffffff;
+  color: #0f172a;
+  padding: 0.75rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid rgba(2, 132, 199, 0.25);
+  box-shadow: 0 16px 36px rgba(2, 132, 199, 0.18), 0 4px 12px rgba(0, 0, 0, 0.06);
+  animation: toast-slide 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.toast-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(2, 132, 199, 0.1);
+  color: #0284c7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-text {
+  font-size: 0.85rem;
+  color: #334155;
+}
+
+.toast-text strong {
+  color: #0284c7;
+}
+
+@keyframes toast-slide {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   B. HERO SECTION & FLUID MOTION BACKGROUND (#F2F5FE TONES)
+   -------------------------------------------------------------------------- */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  padding: 5.4rem 1.5rem 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+/* Hero Campus Headline & Subtitle */
+.hero-text-header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  padding: 0 1rem;
+  max-width: 720px;
+}
+
+.hero-campus-title {
+  font-size: clamp(2.2rem, 5.2vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0 0 0.65rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-campus-title .title-dark {
+  color: #0f172a;
+}
+
+.hero-campus-title .title-blue {
+  color: #0284c7;
+}
+
+.hero-campus-title .title-blue .three-d-face {
+  color: #0284c7;
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-campus-tagline {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  font-weight: 600;
+  color: #334155;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+/* Services Showcase Section (Directly underneath 3D Rotating Circle) */
+.services-showcase-section {
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  margin-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+/* Dynamic Motion Mesh Background with Blue Accents */
+.motion-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  background: transparent;
+}
+
+/* Global Interactive WebGL Scanner Canvas Background (Full Page / Continuous) */
+.app-scanner-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.85;
+}
+
+.motion-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(95px);
+  opacity: 0.7;
+  will-change: transform;
+}
+
+.blob-blue-main {
+  width: 700px;
+  height: 700px;
+  top: -120px;
+  right: -80px;
+  background: radial-gradient(circle, rgba(147, 197, 253, 0.6) 0%, rgba(59, 130, 246, 0.25) 50%, transparent 70%);
+  animation: float-blob-1 18s ease-in-out infinite alternate;
+}
+
+.blob-blue-soft {
+  width: 650px;
+  height: 650px;
+  bottom: -100px;
+  left: -80px;
+  background: radial-gradient(circle, rgba(186, 230, 253, 0.7) 0%, rgba(2, 132, 199, 0.25) 50%, transparent 70%);
+  animation: float-blob-2 22s ease-in-out infinite alternate;
+}
+
+.blob-blue-glow {
+  width: 580px;
+  height: 580px;
+  top: 35%;
+  left: 20%;
+  background: radial-gradient(circle, rgba(199, 210, 254, 0.5) 0%, rgba(96, 165, 250, 0.2) 50%, transparent 70%);
+  animation: float-blob-3 20s ease-in-out infinite alternate;
+}
+
+.blob-warm-accent {
+  width: 500px;
+  height: 500px;
+  bottom: 10%;
+  right: 15%;
+  background: radial-gradient(circle, rgba(254, 243, 199, 0.5) 0%, rgba(251, 191, 36, 0.15) 50%, transparent 70%);
+  animation: float-blob-4 16s ease-in-out infinite alternate;
+}
+
+.motion-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(to right, rgba(2, 132, 199, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(2, 132, 199, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 30%, transparent 85%);
+  pointer-events: none;
+}
+
+@keyframes float-blob-1 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-100px, 80px) scale(1.12); }
+  100% { transform: translate(60px, 120px) scale(0.95); }
+}
+
+@keyframes float-blob-2 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(110px, -80px) scale(1.08); }
+  100% { transform: translate(-50px, -60px) scale(0.92); }
+}
+
+@keyframes float-blob-3 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(80px, 90px) scale(1.15); }
+  100% { transform: translate(-70px, -50px) scale(0.96); }
+}
+
+@keyframes float-blob-4 {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-90px, -70px) scale(1.06); }
+  100% { transform: translate(70px, 40px) scale(0.98); }
+}
+
+/* 3D Viewport Centerpiece */
+.spiral-viewport-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1100px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: -0.5rem;
+}
+
+.spiral-spotlight {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(186, 230, 253, 0.45) 0%, rgba(242, 245, 254, 0.2) 50%, transparent 70%);
+  filter: blur(65px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.spiral-pedestal-light {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 2px;
+  background: radial-gradient(ellipse at center, rgba(2, 132, 199, 0.2) 0%, transparent 75%);
+  filter: blur(1px);
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   C. MODAL / LIGHTBOX
+   -------------------------------------------------------------------------- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: modal-fade 0.25s ease forwards;
+}
+
+@keyframes modal-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-container {
+  background: #ffffff;
+  border: 1px solid rgba(2, 132, 199, 0.15);
+  border-radius: 24px;
+  width: 100%;
+  max-width: 540px;
+  max-height: 94vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(2, 132, 199, 0.18), 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.modal-header {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.modal-index {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0284c7;
+  letter-spacing: 0.12em;
+}
+
+.modal-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.modal-category {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.modal-close-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #475569;
+  transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: #0f172a;
+}
+
+.modal-body {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: #f8fafc;
+  overflow: hidden;
+}
+
+.modal-image-wrapper {
+  max-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-main-image {
+  max-width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border-radius: 14px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15);
+}
+
+.modal-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #0f172a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.modal-nav-btn:hover {
+  background: #ffffff;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.prev-btn { left: 1rem; }
+.next-btn { right: 1rem; }
+
+.modal-footer {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.modal-desc {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.modal-hints {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   RESPONSIVE (MOBILE & TABLET OPTIMIZATIONS)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0.5rem 1rem;
+  }
+
+  .navbar-brand {
+    gap: 0.15rem;
+  }
+
+  .navbar-h-icon {
+    height: 36px;
+  }
+
+  .navbar-helpu-text {
+    height: 23px;
+  }
+
+  .navbar-download-group {
+    padding: 0.32rem 0.65rem 0.28rem 0.65rem;
+    border-radius: 14px;
+    gap: 0.16rem;
+  }
+
+  .download-title {
+    font-size: 0.64rem;
+  }
+
+  .hero-section {
+    padding: 4.2rem 0.75rem 1rem 0.75rem;
+    min-height: 100vh;
+  }
+
+  .hero-text-header {
+    margin-top: 0.2rem;
+    margin-bottom: 0.25rem;
+    padding: 0 0.5rem;
+  }
+
+  .hero-campus-title {
+    font-size: 1.95rem;
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+
+  .hero-campus-tagline {
+    font-size: 0.95rem;
+  }
+
+  .spiral-viewport-container {
+    height: 440px;
+    max-width: 100%;
+    margin-top: -0.65rem;
+  }
+
+  .download-toast {
+    top: 70px;
+    right: 1rem;
+    left: 1rem;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-container {
+    padding: 0.45rem 0.8rem;
+  }
+
+  .navbar-h-icon {
+    height: 32px;
+  }
+
+  .navbar-helpu-text {
+    height: 20px;
+  }
+
+  .navbar-download-group {
+    padding: 0;
+    border-radius: 0;
+    gap: 0.16rem;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .download-title {
+    font-size: 0.62rem;
+    color: #0f172a;
+    font-weight: 800;
+  }
+
+  .hero-section {
+    padding: 4.8rem 0.5rem 0.75rem 0.5rem;
+    min-height: 100vh;
+  }
+
+  .hero-text-header {
+    margin-top: 0.1rem;
+    margin-bottom: 0.15rem;
+  }
+
+  .hero-campus-title {
+    font-size: 1.65rem;
+    line-height: 1.15;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-campus-tagline {
+    font-size: 0.85rem;
+  }
+
+  .spiral-viewport-container {
+    height: 390px;
+    margin-top: -0.85rem;
+  }
+}

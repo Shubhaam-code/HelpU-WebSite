@@ -1,0 +1,158 @@
+/* ==========================================================================
+   React Bits Pro: Footer 14 (One-Row Footer with Gliding Link Underline)
+   Adapted for HelpU Soft Blue & White Modern Aesthetics
+   ========================================================================== */
+
+.footer-14-root {
+  width: 100%;
+  position: relative;
+  z-index: 20;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(2, 132, 199, 0.12);
+  box-shadow: 0 -4px 20px rgba(2, 132, 199, 0.04);
+  padding: 1rem 1.5rem;
+  box-sizing: border-box;
+}
+
+.footer-14-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* Brand & Copyright Section */
+.footer-14-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex-shrink: 0;
+}
+
+.footer-brand-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.footer-logo-img {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(2, 132, 199, 0.15));
+}
+
+.footer-brand-title {
+  font-size: 0.98rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+}
+
+.footer-divider-dot {
+  color: #94a3b8;
+  font-size: 0.75rem;
+}
+
+.footer-copyright {
+  font-size: 0.8rem;
+  color: #64748b;
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+/* Nav Links Row with Gliding Underline */
+.footer-14-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+}
+
+.footer-14-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #475569;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: color 0.2s ease;
+  user-select: none;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.footer-14-link:hover,
+.footer-14-link.is-active {
+  color: #0284c7;
+}
+
+.footer-link-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* The Gliding Link Underline */
+.footer-gliding-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0.85rem;
+  right: 0.85rem;
+  height: 2.5px;
+  background: linear-gradient(90deg, #0284c7 0%, #2563eb 100%);
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(2, 132, 199, 0.45);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Responsive Footer */
+@media (max-width: 900px) {
+  .footer-14-container {
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .footer-14-nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-14-root {
+    padding: 1.15rem 1rem;
+  }
+
+  .footer-14-brand {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .footer-divider-dot {
+    display: none;
+  }
+
+  .footer-14-link {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.78rem;
+  }
+
+  .footer-gliding-underline {
+    left: 0.65rem;
+    right: 0.65rem;
+  }
+}

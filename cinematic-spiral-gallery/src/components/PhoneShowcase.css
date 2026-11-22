@@ -1,0 +1,327 @@
+/* ==========================================================================
+   HelpU 3D Phone Mockups Trio & Services Showcase (Image 1 Style)
+   ========================================================================== */
+
+.phone-showcase-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1rem 3rem 1rem;
+  z-index: 5;
+  user-select: none;
+}
+
+/* Background Atmosphere matching Image 1 */
+.showcase-ambient-glow {
+  position: absolute;
+  width: 650px;
+  height: 650px;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%, -20%);
+  border-radius: 50%;
+  filter: blur(100px);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.6;
+}
+
+/* --------------------------------------------------------------------------
+   3D REALISTIC PHONE VIEWPORT & STAGE
+   -------------------------------------------------------------------------- */
+.phones-trio-viewport {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  height: 560px;
+  perspective: 1400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.phones-trio-stage {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}
+
+/* Individual Phone Mockup Item */
+.phone-mockup-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -245px;
+  margin-left: -125px;
+  width: 250px;
+  height: 500px;
+  transform-style: preserve-3d;
+  will-change: transform, opacity;
+  cursor: grab;
+}
+
+.phone-mockup-wrapper:active {
+  cursor: grabbing;
+}
+
+.phone-mockup-wrapper.is-side {
+  cursor: pointer;
+}
+
+/* Realistic Smartphone Device Frame */
+.smartphone-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  background: #0f172a;
+  border: 7px solid #1e293b;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+/* Metallic Rim Highlight */
+.smartphone-frame::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  pointer-events: none;
+  z-index: 15;
+}
+
+/* Dynamic Island Notch & Camera */
+.phone-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 13px;
+  background: #000000;
+  border-radius: 10px;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.notch-camera {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #1e293b;
+  border: 1px solid #334155;
+}
+
+.notch-speaker {
+  width: 12px;
+  height: 2px;
+  border-radius: 2px;
+  background: #334155;
+  margin-left: 5px;
+}
+
+/* Glass Reflection Overlay */
+.phone-screen-glare {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55%;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.05) 45%, transparent 60%);
+  border-radius: 34px 34px 0 0;
+  pointer-events: none;
+  z-index: 12;
+}
+
+/* Phone Screen Viewport */
+.phone-screen-viewport {
+  width: 100%;
+  height: 100%;
+  border-radius: 33px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.phone-screen-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+/* Bottom Home Indicator */
+.phone-home-indicator {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 75px;
+  height: 3px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 3px;
+  z-index: 20;
+}
+
+/* Tap to View Hint on Side Phones */
+.side-phone-click-hint {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #0284c7;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  opacity: 0.85;
+}
+
+/* --------------------------------------------------------------------------
+   E. RESPONSIVE DESIGN (TABLETS & MOBILE SCREENS)
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  .phone-showcase-wrapper {
+    padding: 0.5rem 0.75rem 2rem 0.75rem;
+  }
+
+  .service-tabs-pill {
+    gap: 0.2rem;
+    padding: 0.25rem;
+  }
+
+  .service-tab-btn {
+    padding: 0.45rem 0.8rem;
+    gap: 0.35rem;
+  }
+
+  .tab-icon {
+    font-size: 1rem;
+  }
+
+  .tab-name {
+    font-size: 0.75rem;
+  }
+
+  .tab-sub {
+    font-size: 0.58rem;
+  }
+
+  .phones-trio-viewport {
+    height: 460px;
+    perspective: 1100px;
+  }
+
+  .phones-trio-stage {
+    height: 410px;
+  }
+
+  .phone-mockup-wrapper {
+    margin-top: -205px;
+    margin-left: -105px;
+    width: 210px;
+    height: 410px;
+  }
+
+  .smartphone-frame {
+    border-radius: 32px;
+    border-width: 5px;
+  }
+
+  .phone-screen-viewport {
+    border-radius: 27px;
+  }
+}
+
+@media (max-width: 480px) {
+  .phone-showcase-wrapper {
+    padding: 0.25rem 0.5rem 1.5rem 0.5rem;
+    overflow: hidden;
+  }
+
+  .phones-trio-viewport {
+    height: 380px;
+    perspective: 850px;
+    width: 100%;
+    max-width: 100vw;
+    overflow: hidden;
+  }
+
+  .phones-trio-stage {
+    height: 340px;
+  }
+
+  .phone-mockup-wrapper {
+    margin-top: -165px;
+    margin-left: -80px;
+    width: 160px;
+    height: 330px;
+  }
+
+  .smartphone-frame {
+    border-radius: 26px;
+    border-width: 4px;
+  }
+
+  .phone-screen-viewport {
+    border-radius: 22px;
+  }
+
+  .phone-notch {
+    width: 42px;
+    height: 9px;
+    top: 6px;
+  }
+
+  .side-phone-click-hint {
+    display: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .phones-trio-viewport {
+    height: 340px;
+    perspective: 750px;
+  }
+
+  .phones-trio-stage {
+    height: 310px;
+  }
+
+  .phone-mockup-wrapper {
+    margin-top: -150px;
+    margin-left: -70px;
+    width: 140px;
+    height: 300px;
+  }
+
+  .smartphone-frame {
+    border-radius: 22px;
+    border-width: 3.5px;
+  }
+
+  .phone-screen-viewport {
+    border-radius: 18px;
+  }
+}
