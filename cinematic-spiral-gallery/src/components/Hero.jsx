@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PhoneShowcase from './PhoneShowcase.jsx';
 import CircularCarousel from './CircularCarousel.jsx';
 import ThreeDLetterSwap from './ThreeDLetterSwap.jsx';
+import RotatingText from './RotatingText.jsx';
 
 export default function Hero({ images, config }) {
   const [windowWidth, setWindowWidth] = useState(
@@ -39,7 +40,6 @@ export default function Hero({ images, config }) {
         <div className="motion-blob blob-blue-main" />
         <div className="motion-blob blob-blue-soft" />
         <div className="motion-blob blob-blue-glow" />
-        <div className="motion-blob blob-warm-accent" />
         <div className="motion-grid-overlay" />
       </div>
 
@@ -95,8 +95,31 @@ export default function Hero({ images, config }) {
         </div>
       </div>
 
+      {/* Mid-Section Transition Headline in Empty Gap with React Bits RotatingText */}
+      <div className="showcase-transition-header">
+        <h2 className="showcase-transition-title">
+          <span>Your College Life,</span>{' '}
+          <RotatingText
+            texts={['Upgraded.', 'Simplified.', 'Connected.', 'Smarter.']}
+            mainClassName="showcase-rotating-accent"
+            splitLevelClassName="showcase-rotating-word-masked"
+            elementLevelClassName="showcase-rotating-letter"
+            effect="slide"
+            direction="up"
+            staggerFrom="last"
+            staggerDuration={0.025}
+            rotationInterval={2400}
+            auto={true}
+            loop={true}
+          />
+        </h2>
+        <p className="showcase-transition-subtitle">
+          The smarter way to navigate your campus journey.
+        </p>
+      </div>
+
       {/* 2. Directly Beneath: 3 Services Showcase (Zero Overlap, Clean & Spacious) */}
-      <div className="services-showcase-section">
+      <div className="services-showcase-section" id="services">
         <PhoneShowcase />
       </div>
     </section>
