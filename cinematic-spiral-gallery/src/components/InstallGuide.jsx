@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import BorderGlow from './BorderGlow.jsx';
 import VariableProximity from './VariableProximity.jsx';
+import PwaInstallModal from './PwaInstallModal.jsx';
 import { usePwaInstall } from '../hooks/usePwaInstall.js';
 import './InstallGuide.css';
 
@@ -43,7 +44,13 @@ function LazyVideo({ src, className, ...props }) {
 export default function InstallGuide() {
   const [apkDownloading, setApkDownloading] = useState(false);
   const optionsHeaderRef = useRef(null);
-  const { isInstalled, triggerPwaInstall } = usePwaInstall();
+  const {
+    isInstalled,
+    isModalOpen,
+    openInstallModal,
+    closeInstallModal,
+    executeInstall
+  } = usePwaInstall();
 
   const handleApkDownload = () => {
     setApkDownloading(true);
@@ -59,8 +66,8 @@ export default function InstallGuide() {
     }, 2500);
   };
 
-  const handlePwaInstall = async () => {
-    await triggerPwaInstall();
+  const handlePwaInstall = () => {
+    openInstallModal();
   };
 
   return (
@@ -426,6 +433,14 @@ export default function InstallGuide() {
           </button>
         </div>
       </div>
+
+      {/* HelpU Custom Redesigned PWA Install Modal / Bottom Sheet */}
+      <PwaInstallModal
+        isOpen={isModalOpen}
+        onClose={closeInstallModal}
+        onInstall={executeInstall}
+        isInstalled={isInstalled}
+      />
     </section>
   );
 }

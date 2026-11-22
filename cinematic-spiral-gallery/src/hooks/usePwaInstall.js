@@ -6,6 +6,7 @@ export function usePwaInstall() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [isInstallable, setIsInstallable] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleBeforeInstallPrompt = (e) => {
@@ -18,6 +19,7 @@ export function usePwaInstall() {
       setIsInstalled(true);
       setIsInstallable(false);
       setDeferredPrompt(null);
+      setIsModalOpen(false);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -36,7 +38,15 @@ export function usePwaInstall() {
     };
   }, []);
 
-  const triggerPwaInstall = async () => {
+  const openInstallModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeInstallModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const executeInstall = async () => {
     if (deferredPrompt) {
       try {
         deferredPrompt.prompt();
@@ -44,14 +54,21 @@ export function usePwaInstall() {
         if (choiceResult.outcome === 'accepted') {
           setIsInstalled(true);
           setDeferredPrompt(null);
-          return { success: true, outcome: choiceResult.outcome };
         }
       } catch (err) {
-        console.warn('Install error:', err);
+        console.warn('Install prompt error:', err);
       }
     }
-    return { success: false };
+    setIsModalOpen(false);
   };
 
-  return { isInstallable, isInstalled, triggerPwaInstall, pwaUrl: HELPU_PWA_TARGET_URL };
+  return {
+    isInstallable,
+    isInstalled,
+    isModalOpen,
+    openInstallModal,
+    closeInstallModal,
+    executeInstall,
+    pwaUrl: HELPU_PWA_TARGET_URL
+  };
 }
