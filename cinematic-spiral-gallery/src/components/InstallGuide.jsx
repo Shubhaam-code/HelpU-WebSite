@@ -43,7 +43,7 @@ function LazyVideo({ src, className, ...props }) {
 export default function InstallGuide() {
   const [apkDownloading, setApkDownloading] = useState(false);
   const optionsHeaderRef = useRef(null);
-  const { isInstalled, triggerPwaInstall, toastMessage, setToastMessage } = usePwaInstall();
+  const { isInstalled, triggerPwaInstall } = usePwaInstall();
 
   const handleApkDownload = () => {
     setApkDownloading(true);
@@ -426,21 +426,6 @@ export default function InstallGuide() {
           </button>
         </div>
       </div>
-
-      {/* Interactive Guidance Toast for PWA installation */}
-      {toastMessage && (
-        <div className="pwa-guide-toast">
-          <span className="toast-pwa-icon">💡</span>
-          <span className="toast-pwa-text">{toastMessage}</span>
-          <button
-            type="button"
-            className="toast-pwa-close"
-            onClick={() => setToastMessage(null)}
-          >
-            ✕
-          </button>
-        </div>
-      )}
     </section>
   );
 }
