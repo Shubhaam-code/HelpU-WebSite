@@ -270,7 +270,7 @@ const CircularCarousel = ({
     angle: 0,
     velocity: 0,
     target: null,
-    dir: 0,
+    dir: -1,
     press: null,
     drag: false,
     hover: false,
@@ -488,7 +488,8 @@ const CircularCarousel = ({
       }
 
       const paused = (s.pauseOnHover && state.hover) || state.drag || now < state.holdUntil;
-      const cruise = s.autoplay === 'drift' && !paused && !state.intro ? s.speed * state.dir : 0;
+      const dir = state.dir || -1;
+      const cruise = s.autoplay === 'drift' && !paused && !state.intro ? s.speed * dir : 0;
       let busy = Boolean(state.intro) || state.drag;
 
       if (state.drag || state.intro) {
@@ -516,7 +517,7 @@ const CircularCarousel = ({
         if (cruise === 0 && s.snap && Math.abs(state.velocity) < SETTLE_SPEED) {
           state.target = nearest(state.angle);
         }
-        busy = busy || cruise !== 0 || Math.abs(state.velocity) > 0.01 || state.target !== null;
+        busy = busy || (s.autoplay === 'drift' && !paused) || cruise !== 0 || Math.abs(state.velocity) > 0.01 || state.target !== null;
       }
 
       if (s.autoplay === 'step' && !paused && !state.intro && state.introDone) {

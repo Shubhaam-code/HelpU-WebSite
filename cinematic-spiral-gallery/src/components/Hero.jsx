@@ -100,7 +100,10 @@ export default function Hero({ images, config }) {
             gap={isMobile ? 18 : 25}
             perspective={responsivePerspective}
             curve={config.curve ?? 0}
-            speed={config.speed}
+            autoplay="drift"
+            speed={7}
+            pauseOnHover={false}
+            draggable={true}
             captions={false}
             fadeColor="#F2F5FE"
             innerShade={0.08}

@@ -13,7 +13,7 @@ export default function App() {
     intro: 'rise',
     cardWidth: 195,
     aspectRatio: 0.485,
-    speed: 14,
+    speed: 7,
     curve: 0
   });
 
