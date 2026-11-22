@@ -447,6 +447,312 @@
 }
 
 /* ==========================================================================
+   TWO DEDICATED SEPARATE INSTALLATION METHODS (PWA VS ANDROID APK)
+   ========================================================================== */
+.install-methods-section {
+  width: 100%;
+  margin-top: 2rem;
+  box-sizing: border-box;
+}
+
+.install-options-header {
+  text-align: center;
+  margin-bottom: 1.25rem;
+}
+
+.options-section-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.35rem 0;
+  line-height: 1.25;
+}
+
+.highlight-blue {
+  background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.options-section-subtitle {
+  font-size: 0.94rem;
+  color: #1e293b;
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.options-section-title .proximity-title-dark {
+  font-weight: 800;
+  display: inline;
+}
+
+.options-section-title .proximity-title-blue {
+  font-weight: 800;
+  display: inline;
+}
+
+.options-section-subtitle .proximity-subtitle {
+  font-weight: 600;
+  display: inline;
+}
+
+.install-options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.install-option-card {
+  background: #ffffff;
+  border: 1px solid rgba(2, 132, 199, 0.16);
+  border-radius: 24px;
+  padding: 1.45rem 1.65rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04), 0 2px 8px rgba(2, 132, 199, 0.04);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.install-option-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 38px -4px rgba(2, 132, 199, 0.16), 0 4px 12px rgba(15, 23, 42, 0.04);
+  border-color: rgba(2, 132, 199, 0.35);
+}
+
+.option-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.85rem;
+}
+
+.option-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.install-option-card:hover .option-icon-box {
+  transform: scale(1.08);
+}
+
+.icon-box-pwa {
+  background: #eff6ff;
+  border: 1px solid rgba(2, 132, 199, 0.22);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.12);
+}
+
+.icon-box-apk {
+  background: #f0fdf4;
+  border: 1px solid rgba(22, 163, 74, 0.25);
+  box-shadow: 0 4px 12px rgba(22, 163, 74, 0.14);
+}
+
+.option-pill-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: 9999px;
+  letter-spacing: 0.02em;
+}
+
+.badge-pwa {
+  background: #e0f2fe;
+  color: #0369a1;
+  border: 1px solid rgba(2, 132, 199, 0.2);
+}
+
+.badge-apk {
+  background: #dcfce7;
+  color: #15803d;
+  border: 1px solid rgba(22, 163, 74, 0.25);
+}
+
+.option-card-body {
+  margin-bottom: 1.25rem;
+}
+
+.option-card-heading {
+  font-size: 1.28rem;
+  font-weight: 800;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.35rem 0;
+}
+
+.option-card-copy {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.option-card-footer {
+  margin-top: auto;
+}
+
+.btn-install-choice {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.72rem 1.35rem;
+  border-radius: 14px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  user-select: none;
+  box-sizing: border-box;
+}
+
+.btn-pwa-choice {
+  background: #ffffff;
+  color: #0284c7;
+  border: 1.5px solid rgba(2, 132, 199, 0.35);
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.08);
+}
+
+.btn-pwa-choice:hover {
+  background: #f0f9ff;
+  border-color: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.16);
+}
+
+.btn-apk-choice {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35);
+}
+
+.btn-apk-choice:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.45);
+}
+
+.btn-install-choice:active {
+  transform: translateY(0);
+}
+
+/* CTA Actions Group in Bottom Banner */
+.cta-actions-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.cta-btn-pwa {
+  background: #ffffff;
+  color: #0284c7;
+  border: 1.5px solid rgba(2, 132, 199, 0.35);
+  border-radius: 9999px;
+  padding: 0.65rem 1.3rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.cta-btn-pwa:hover {
+  background: #f0f9ff;
+  border-color: #0284c7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(2, 132, 199, 0.15);
+}
+
+.cta-btn-apk {
+  background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 700;
+  padding: 0.68rem 1.45rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.35);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease, background 0.2s ease;
+  user-select: none;
+}
+
+.cta-btn-apk:hover {
+  transform: translateY(-2px) scale(1.025);
+  box-shadow: 0 10px 24px rgba(2, 132, 199, 0.45);
+  background: linear-gradient(135deg, #0369a1 0%, #0284c7 100%);
+}
+
+.cta-btn-apk:active,
+.cta-btn-pwa:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* Interactive Floating PWA Toast */
+.pwa-guide-toast {
+  position: fixed;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2500;
+  background: #0f172a;
+  color: #ffffff;
+  padding: 0.85rem 1.25rem;
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  max-width: 90%;
+  animation: toast-fade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes toast-fade {
+  from { opacity: 0; transform: translate(-50%, 15px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+.toast-pwa-icon {
+  font-size: 1.15rem;
+}
+
+.toast-pwa-text {
+  flex: 1;
+}
+
+.toast-pwa-close {
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 0 0 0.5rem;
+  line-height: 1;
+}
+
+.toast-pwa-close:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
    READY TO GET STARTED? BOTTOM CTA BANNER (Matching User Reference Image)
    ========================================================================== */
 .install-cta-banner {
@@ -572,6 +878,39 @@
 }
 
 /* Responsive CTA Banner for Tablet & Mobile */
+/* Responsive Installation Methods Grid & CTA Banner */
+@media (max-width: 768px) {
+  .install-options-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .options-section-title {
+    font-size: 1.28rem;
+  }
+
+  .options-section-subtitle {
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+
+  .cta-actions-group {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.65rem;
+  }
+
+  .cta-btn-pwa,
+  .cta-btn-apk {
+    width: 100%;
+    justify-content: center;
+    padding: 0.72rem 1.2rem;
+    box-sizing: border-box;
+    text-align: center;
+  }
+}
+
 @media (max-width: 680px) {
   .install-cta-banner {
     flex-direction: column;

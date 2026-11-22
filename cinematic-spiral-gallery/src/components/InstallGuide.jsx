@@ -1,18 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import BorderGlow from './BorderGlow.jsx';
-import { redirectToInstallPage } from '../config/installConfig.js';
+import VariableProximity from './VariableProximity.jsx';
+import { usePwaInstall } from '../hooks/usePwaInstall.js';
 import './InstallGuide.css';
 
 export default function InstallGuide() {
-  const [downloading, setDownloading] = useState(false);
+  const [apkDownloading, setApkDownloading] = useState(false);
+  const optionsHeaderRef = useRef(null);
+  const { isInstalled, triggerPwaInstall, toastMessage, setToastMessage } = usePwaInstall();
 
-  const handleDownload = () => {
-    setDownloading(true);
-    redirectToInstallPage();
+  const handleApkDownload = () => {
+    setApkDownloading(true);
+    const link = document.createElement('a');
+    link.href = '/app/app-debug.apk';
+    link.download = 'HelpU.apk';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+
+    setTimeout(() => {
+      setApkDownloading(false);
+    }, 2500);
+  };
+
+  const handlePwaInstall = async () => {
+    await triggerPwaInstall();
   };
 
   return (
-    <section className="install-guide-section">
+    <section className="install-guide-section" id="how-it-works">
       <div className="install-guide-container">
         {/* Left Card: Get Started in Seconds */}
         <div className="guide-card guide-steps-card">
@@ -204,6 +220,134 @@ export default function InstallGuide() {
         </div>
       </div>
 
+      {/* Two Dedicated Distinct Installation Methods: PWA vs Android APK */}
+      <div className="install-methods-section" id="install-options">
+        <div className="install-options-header" ref={optionsHeaderRef} style={{ position: 'relative' }}>
+          <h3 className="options-section-title">
+            <VariableProximity
+              label="Choose Your"
+              className="proximity-title-dark"
+              fromFontVariationSettings="'wght' 700, 'opsz' 24"
+              toFontVariationSettings="'wght' 1000, 'opsz' 40"
+              containerRef={optionsHeaderRef}
+              radius={100}
+              falloff="linear"
+              smoothing={0.2}
+              fromColor="#0f172a"
+              toColor="#0284c7"
+            />{' '}
+            <VariableProximity
+              label="Installation Method"
+              className="proximity-title-blue"
+              fromFontVariationSettings="'wght' 700, 'opsz' 24"
+              toFontVariationSettings="'wght' 1000, 'opsz' 40"
+              containerRef={optionsHeaderRef}
+              radius={100}
+              falloff="linear"
+              smoothing={0.2}
+              fromColor="#0284c7"
+              toColor="#2563eb"
+            />
+          </h3>
+          <p className="options-section-subtitle">
+            <VariableProximity
+              label="Install instantly as a web app or download the native Android application."
+              className="proximity-subtitle"
+              fromFontVariationSettings="'wght' 600, 'opsz' 14"
+              toFontVariationSettings="'wght' 800, 'opsz' 24"
+              containerRef={optionsHeaderRef}
+              radius={80}
+              falloff="linear"
+              smoothing={0.2}
+              fromColor="#1e293b"
+              toColor="#0f172a"
+            />
+          </p>
+        </div>
+
+        <div className="install-options-grid">
+          {/* Option A: Install PWA Card */}
+          <div className="install-option-card option-card-pwa">
+            <div className="option-card-header">
+              <div className="option-icon-box icon-box-pwa">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0284c7" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                  <line x1="8" y1="21" x2="16" y2="21"/>
+                  <line x1="12" y1="17" x2="12" y2="21"/>
+                  <path d="M12 7v5m0 0l-2-2m2 2l2-2" stroke="#0284c7" strokeWidth="2.2"/>
+                </svg>
+              </div>
+              <span className="option-pill-badge badge-pwa">Instant Web App</span>
+            </div>
+
+            <div className="option-card-body">
+              <h4 className="option-card-heading">Install PWA</h4>
+              <p className="option-card-copy">
+                Install directly from your browser. No APK needed.
+              </p>
+            </div>
+
+            <div className="option-card-footer">
+              <button
+                type="button"
+                className="btn-install-choice btn-pwa-choice"
+                onClick={handlePwaInstall}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span>{isInstalled ? 'Installed ✓' : 'Install PWA'}</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Option B: Download Android APK Card */}
+          <div className="install-option-card option-card-apk">
+            <div className="option-card-header">
+              <div className="option-icon-box icon-box-apk">
+                <svg width="30" height="30" viewBox="0 0 24 24" fill="none">
+                  <rect x="1.5" y="8" width="3" height="8.5" rx="1.5" fill="#16a34a" />
+                  <rect x="19.5" y="8" width="3" height="8.5" rx="1.5" fill="#16a34a" />
+                  <path d="M6 7.5C6 4.19 8.69 1.5 12 1.5s6 2.69 6 6H6z" fill="#16a34a" />
+                  <line x1="8.8" y1="2.8" x2="7.2" y2="0.8" stroke="#16a34a" strokeWidth="1.3" strokeLinecap="round" />
+                  <line x1="15.2" y1="2.8" x2="16.8" y2="0.8" stroke="#16a34a" strokeWidth="1.3" strokeLinecap="round" />
+                  <circle cx="9.5" cy="5" r="0.75" fill="#ffffff" />
+                  <circle cx="14.5" cy="5" r="0.75" fill="#ffffff" />
+                  <path d="M6 9h12v7.5c0 1.1-.9 2-2 2H8c-1.1 0-2-.9-2-2V9z" fill="#16a34a" />
+                  <rect x="8" y="18.5" width="2.5" height="4.5" rx="1.25" fill="#16a34a" />
+                  <rect x="13.5" y="18.5" width="2.5" height="4.5" rx="1.25" fill="#16a34a" />
+                </svg>
+              </div>
+              <span className="option-pill-badge badge-apk">Android Only</span>
+            </div>
+
+            <div className="option-card-body">
+              <h4 className="option-card-heading">Android APK</h4>
+              <p className="option-card-copy">
+                Download the Android app installer directly to your device.
+              </p>
+            </div>
+
+            <div className="option-card-footer">
+              <button
+                type="button"
+                className="btn-install-choice btn-apk-choice"
+                onClick={handleApkDownload}
+              >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                  <polyline points="7 10 12 15 17 10"/>
+                  <line x1="12" y1="15" x2="12" y2="3"/>
+                </svg>
+                <span>{apkDownloading ? 'Downloading APK...' : 'Download APK'}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Bottom Floating CTA Banner (Matching User Reference Image with notification.mp4) */}
       <div className="install-cta-banner">
         <div className="cta-banner-left">
@@ -219,19 +363,45 @@ export default function InstallGuide() {
           </div>
           <div className="cta-text-wrap">
             <h3 className="cta-title">Ready to Get Started?</h3>
-            <p className="cta-subtitle">Download the app and stay connected.</p>
+            <p className="cta-subtitle">Choose PWA or direct APK download to stay connected.</p>
           </div>
         </div>
 
-        <button
-          className="cta-install-btn"
-          onClick={handleDownload}
-          title="Install HelpU App"
-        >
-          <span>{downloading ? 'Downloading...' : 'Install App'}</span>
-          <span className="cta-btn-arrow">→</span>
-        </button>
+        <div className="cta-actions-group">
+          <button
+            type="button"
+            className="cta-btn-pwa"
+            onClick={handlePwaInstall}
+            title="Install PWA directly in browser"
+          >
+            <span>Install PWA</span>
+          </button>
+          <button
+            type="button"
+            className="cta-btn-apk"
+            onClick={handleApkDownload}
+            title="Download Android APK"
+          >
+            <span>{apkDownloading ? 'Downloading...' : 'Download APK'}</span>
+            <span className="cta-btn-arrow">↓</span>
+          </button>
+        </div>
       </div>
+
+      {/* Interactive Guidance Toast for PWA installation */}
+      {toastMessage && (
+        <div className="pwa-guide-toast">
+          <span className="toast-pwa-icon">💡</span>
+          <span className="toast-pwa-text">{toastMessage}</span>
+          <button
+            type="button"
+            className="toast-pwa-close"
+            onClick={() => setToastMessage(null)}
+          >
+            ✕
+          </button>
+        </div>
+      )}
     </section>
   );
 }
