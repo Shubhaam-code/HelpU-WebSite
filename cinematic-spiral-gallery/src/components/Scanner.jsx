@@ -431,6 +431,8 @@ const Scanner = ({
     };
 
     const onPointerMove = event => {
+      const s = settingsRef.current;
+      if (!s.mouseInteraction || event.pointerType === 'touch') return;
       const { x, y, inside } = locate(event);
       const was = pointer.inside;
       pointer.inside = inside;
@@ -449,7 +451,7 @@ const Scanner = ({
 
     const onPointerDown = event => {
       const s = settingsRef.current;
-      if (s.clickEffect !== 'ping' || reduce) return;
+      if (s.clickEffect !== 'ping' || reduce || event.pointerType === 'touch') return;
       const { x, y, inside } = locate(event);
       if (!inside) return;
       const [ux, uy] = toUv(x, y);

@@ -34,30 +34,30 @@ export default function App() {
 
   return (
     <div className="cinematic-app">
-      {/* Global Interactive Light Blue Scanner Canvas Background (Desktop: WebGL2, Mobile: Lightweight CSS) */}
+      {/* Global Interactive Light Blue Scanner Canvas Background (Active on both Desktop & Mobile) */}
       <div className="app-scanner-bg">
-        {!isMobile && (
-          <Scanner
-            color1="#0284c7"
-            color2="#38bdf8"
-            color3="#1d4ed8"
-            speed={0.4}
-            sweepSpeed={0.22}
-            sweepWidth={1.8}
-            trail={0.55}
-            ripple={0.22}
-            bandDensity={11}
-            glow={0.55}
-            scanDirection="vertical"
-            colorSpread={0.6}
-            scanline
-            scanlineIntensity={0.35}
-            mouseInteraction
-            clickEffect="ping"
-            lightMode
-            opacity={0.75}
-          />
-        )}
+        <Scanner
+          color1="#0284c7"
+          color2="#38bdf8"
+          color3="#1d4ed8"
+          speed={isMobile ? 0.3 : 0.4}
+          sweepSpeed={isMobile ? 0.18 : 0.22}
+          sweepWidth={1.8}
+          trail={0.55}
+          ripple={0.22}
+          bandDensity={isMobile ? 9 : 11}
+          glow={isMobile ? 0.45 : 0.55}
+          scanDirection="vertical"
+          colorSpread={0.6}
+          scanline={!isMobile}
+          scanlineIntensity={0.35}
+          grain={!isMobile}
+          mouseInteraction={!isMobile}
+          clickEffect={isMobile ? 'none' : 'ping'}
+          dpr={isMobile ? 0.65 : 1.25}
+          lightMode
+          opacity={0.8}
+        />
       </div>
 
       {/* Top Navbar */}

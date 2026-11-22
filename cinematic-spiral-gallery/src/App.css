@@ -364,7 +364,8 @@
   overflow: hidden;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.85;
+  background: #f2f5fe;
+  opacity: 0.88;
 }
 
 .motion-blob {
