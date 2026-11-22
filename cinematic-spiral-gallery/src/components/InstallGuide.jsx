@@ -340,7 +340,7 @@ export default function InstallGuide() {
               <picture>
                 <source type="image/webp" srcSet="/apk-students-study.webp" />
                 <img
-                  src="/apk-students-study.png"
+                  src="/apk-students-study.gif"
                   alt="HelpU Students Studying"
                   className="apk-card-mascot-img"
                   loading="lazy"
