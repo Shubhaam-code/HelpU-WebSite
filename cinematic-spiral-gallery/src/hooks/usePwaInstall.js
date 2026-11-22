@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 
+export const HELPU_PWA_TARGET_URL = 'https://help-u-kohl.vercel.app/';
+
 export function usePwaInstall() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [isInstallable, setIsInstallable] = useState(false);
@@ -17,8 +19,11 @@ export function usePwaInstall() {
       setIsInstalled(true);
       setIsInstallable(false);
       setDeferredPrompt(null);
-      setToastMessage('HelpU PWA was successfully installed on your device!');
-      setTimeout(() => setToastMessage(null), 4000);
+      setToastMessage('HelpU PWA installed successfully! Opening HelpU App...');
+      setTimeout(() => {
+        window.open(HELPU_PWA_TARGET_URL, '_blank', 'noopener,noreferrer');
+        setToastMessage(null);
+      }, 1500);
     };
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
@@ -38,39 +43,32 @@ export function usePwaInstall() {
   }, []);
 
   const triggerPwaInstall = async () => {
+    // If native prompt is available for this origin, prompt first
     if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const choiceResult = await deferredPrompt.userChoice;
-      if (choiceResult.outcome === 'accepted') {
-        setIsInstalled(true);
+      try {
+        deferredPrompt.prompt();
+        const choiceResult = await deferredPrompt.userChoice;
+        if (choiceResult.outcome === 'accepted') {
+          setIsInstalled(true);
+          setToastMessage('Installation started! Launching HelpU Progressive Web App...');
+          setTimeout(() => {
+            window.open(HELPU_PWA_TARGET_URL, '_blank', 'noopener,noreferrer');
+            setToastMessage(null);
+          }, 1200);
+          setDeferredPrompt(null);
+          return { success: true, outcome: choiceResult.outcome };
+        }
+      } catch (err) {
+        console.warn('Install prompt error:', err);
       }
-      setDeferredPrompt(null);
-      return { success: true, outcome: choiceResult.outcome };
     }
 
-    // Platform-specific instructions when native prompt is not available
-    const isIOS =
-      typeof navigator !== 'undefined' &&
-      /iPad|iPhone|iPod/.test(navigator.userAgent) &&
-      !window.MSStream;
-
-    if (isIOS) {
-      setToastMessage('To install on iOS: Tap Share (⎋) in Safari, then tap "Add to Home Screen".');
-      setTimeout(() => setToastMessage(null), 5500);
-      return { success: false, platform: 'ios' };
-    }
-
-    if (isInstalled) {
-      setToastMessage('HelpU is already installed on your device!');
-      setTimeout(() => setToastMessage(null), 3500);
-      return { success: true, installed: true };
-    }
-
-    // Chrome / Edge fallback
-    setToastMessage('In your browser address bar or menu (⋮), tap "Install App" or "Add to Home Screen".');
+    // Direct open to the actual HelpU Progressive Web App at https://help-u-kohl.vercel.app/
+    window.open(HELPU_PWA_TARGET_URL, '_blank', 'noopener,noreferrer');
+    setToastMessage('Opening HelpU Web App (help-u-kohl.vercel.app) — Tap "Install" or "Add to Home screen" in browser menu!');
     setTimeout(() => setToastMessage(null), 5000);
-    return { success: false, fallback: true };
+    return { success: true, url: HELPU_PWA_TARGET_URL };
   };
 
-  return { isInstallable, isInstalled, triggerPwaInstall, toastMessage, setToastMessage };
+  return { isInstallable, isInstalled, triggerPwaInstall, toastMessage, setToastMessage, pwaUrl: HELPU_PWA_TARGET_URL };
 }
