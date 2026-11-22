@@ -17,6 +17,17 @@ export default function App() {
     curve: 0
   });
 
+  const [isStandalone, setIsStandalone] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return (
+        window.location.search.includes('app=1') ||
+        window.matchMedia('(display-mode: standalone)').matches ||
+        window.navigator.standalone === true
+      );
+    }
+    return false;
+  });
+
   const [isMobile, setIsMobile] = useState(() => {
     if (typeof window !== 'undefined') {
       return window.innerWidth < 768 || ('ontouchstart' in window && window.innerWidth < 1024);
@@ -31,6 +42,20 @@ export default function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // When launched from Home Screen as standalone installed PWA: render pure full-screen native app
+  if (isStandalone) {
+    return (
+      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100dvh', background: '#FFF8F3', zIndex: 99999, overflow: 'hidden' }}>
+        <iframe
+          src="https://help-u-kohl.vercel.app/"
+          style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+          allow="geolocation; camera; microphone; clipboard-read; clipboard-write"
+          title="Helpu App"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="cinematic-app">
