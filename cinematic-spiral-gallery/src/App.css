@@ -713,7 +713,7 @@
 
   .hero-students-wrapper {
     margin-top: 0.35rem;
-    margin-bottom: -55px;
+    margin-bottom: -110px;
   }
 
   .hero-students-img {
@@ -724,7 +724,7 @@
   .spiral-viewport-container {
     height: 410px;
     max-width: 100%;
-    margin-top: -0.5rem;
+    margin-top: -0.65rem;
   }
 
   .download-toast {
@@ -804,7 +804,7 @@
 
   .hero-students-wrapper {
     margin-top: 0.2rem;
-    margin-bottom: -42px;
+    margin-bottom: -96px;
   }
 
   .hero-students-img {
@@ -814,6 +814,6 @@
 
   .spiral-viewport-container {
     height: 370px;
-    margin-top: -0.5rem;
+    margin-top: -0.75rem;
   }
 }
