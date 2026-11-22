@@ -93,15 +93,8 @@ export default function PhoneShowcase({ onDownload }) {
 
   return (
     <div className="phone-showcase-wrapper">
-      {/* Background Ambient Elements matching Image 1 */}
+      {/* Background Ambient Elements */}
       <div className="showcase-ambient-grid" />
-      <motion.div
-        className="showcase-ambient-glow"
-        animate={{
-          background: `radial-gradient(circle, ${currentService.glowColor} 0%, transparent 65%)`
-        }}
-        transition={{ duration: 0.6 }}
-      />
 
       {/* 3D Realistic Phone Mockups Trio Container (Image 1 Style) */}
       <div className="phones-trio-viewport">
@@ -171,7 +164,7 @@ export default function PhoneShowcase({ onDownload }) {
                   className="smartphone-frame"
                   style={{
                     boxShadow: isCenter
-                      ? `0 28px 55px -10px ${service.glowColor}, 0 20px 35px rgba(15, 23, 42, 0.16)`
+                      ? '0 28px 55px -10px rgba(2, 132, 199, 0.22), 0 20px 35px rgba(15, 23, 42, 0.16)'
                       : '0 18px 38px rgba(15, 23, 42, 0.18)'
                   }}
                 >
