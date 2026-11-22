@@ -503,9 +503,12 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 1.25rem;
   align-items: stretch;
+  margin-top: 5.8rem;
 }
 
 .install-option-card {
+  position: relative;
+  overflow: visible;
   background: #ffffff;
   border: 1px solid rgba(2, 132, 199, 0.16);
   border-radius: 24px;
@@ -516,6 +519,41 @@
   justify-content: space-between;
   box-shadow: 0 10px 28px rgba(15, 23, 42, 0.04), 0 2px 8px rgba(2, 132, 199, 0.04);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+/* Mascot Sitting on Top of PWA Box */
+.pwa-card-mascot-wrapper {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  pointer-events: none;
+  z-index: 5;
+  margin-bottom: -6px;
+}
+
+.pwa-card-mascot-img {
+  width: 195px;
+  max-width: 82vw;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 22px rgba(2, 132, 199, 0.16));
+  animation: pwaMascotFloat 3.8s ease-in-out infinite;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+@keyframes pwaMascotFloat {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 
 .install-option-card:hover {
@@ -883,6 +921,12 @@
   .install-options-grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+    margin-top: 5.2rem;
+  }
+
+  .pwa-card-mascot-img {
+    width: 165px;
+    filter: drop-shadow(0 8px 18px rgba(2, 132, 199, 0.14));
   }
 
   .options-section-title {
@@ -948,6 +992,17 @@
     justify-content: center;
     padding: 0.72rem 1.25rem;
     font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .install-options-grid {
+    margin-top: 4.8rem;
+  }
+
+  .pwa-card-mascot-img {
+    width: 148px;
+    filter: drop-shadow(0 6px 14px rgba(2, 132, 199, 0.12));
   }
 }
 

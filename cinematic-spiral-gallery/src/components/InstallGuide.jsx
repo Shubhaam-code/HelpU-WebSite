@@ -268,6 +268,19 @@ export default function InstallGuide() {
         <div className="install-options-grid">
           {/* Option A: Install PWA Card */}
           <div className="install-option-card option-card-pwa">
+            {/* Mascot Peeking / Sitting on Top of PWA Box */}
+            <div className="pwa-card-mascot-wrapper" aria-hidden="true">
+              <picture>
+                <source type="image/webp" srcSet="/pwa-students-dance.webp" />
+                <img
+                  src="/pwa-students-dance.gif"
+                  alt="HelpU Students on Laptop"
+                  className="pwa-card-mascot-img"
+                  loading="lazy"
+                />
+              </picture>
+            </div>
+
             <div className="option-card-header">
               <div className="option-icon-box icon-box-pwa">
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#0284c7" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
