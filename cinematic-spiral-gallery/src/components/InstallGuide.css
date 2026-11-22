@@ -525,10 +525,10 @@
 .pwa-card-mascot-wrapper {
   position: absolute;
   bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 20px;
+  transform: none;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: flex-end;
   pointer-events: none;
   z-index: 5;
@@ -924,6 +924,11 @@
     margin-top: 5.2rem;
   }
 
+  .pwa-card-mascot-wrapper {
+    left: 16px;
+    transform: none;
+  }
+
   .pwa-card-mascot-img {
     width: 165px;
     filter: drop-shadow(0 8px 18px rgba(2, 132, 199, 0.14));
@@ -998,6 +1003,11 @@
 @media (max-width: 480px) {
   .install-options-grid {
     margin-top: 4.8rem;
+  }
+
+  .pwa-card-mascot-wrapper {
+    left: 12px;
+    transform: none;
   }
 
   .pwa-card-mascot-img {
