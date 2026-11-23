@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const HELPU_PWA_TARGET_URL = '/';
+export const HELPU_APP_INSTALL_URL = 'https://help-u-kohl.vercel.app/install-app';
 
 export function usePwaInstall() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
@@ -47,19 +47,10 @@ export function usePwaInstall() {
   };
 
   const executeInstall = async () => {
-    if (deferredPrompt) {
-      try {
-        deferredPrompt.prompt();
-        const choiceResult = await deferredPrompt.userChoice;
-        if (choiceResult.outcome === 'accepted') {
-          setIsInstalled(true);
-          setDeferredPrompt(null);
-        }
-      } catch (err) {
-        console.warn('Install prompt error:', err);
-      }
-    }
     setIsModalOpen(false);
+    if (typeof window !== 'undefined') {
+      window.location.href = HELPU_APP_INSTALL_URL;
+    }
   };
 
   return {
@@ -69,6 +60,6 @@ export function usePwaInstall() {
     openInstallModal,
     closeInstallModal,
     executeInstall,
-    pwaUrl: HELPU_PWA_TARGET_URL
+    pwaUrl: HELPU_APP_INSTALL_URL
   };
 }
