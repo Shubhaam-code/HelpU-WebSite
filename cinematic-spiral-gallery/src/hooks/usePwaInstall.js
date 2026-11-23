@@ -48,8 +48,17 @@ export function usePwaInstall() {
 
   const executeInstall = async () => {
     setIsModalOpen(false);
-    if (typeof window !== 'undefined') {
-      window.location.href = HELPU_APP_INSTALL_URL;
+    if (deferredPrompt) {
+      try {
+        deferredPrompt.prompt();
+        const choiceResult = await deferredPrompt.userChoice;
+        if (choiceResult.outcome === 'accepted') {
+          setIsInstalled(true);
+          setDeferredPrompt(null);
+        }
+      } catch (err) {
+        console.warn('Install prompt error:', err);
+      }
     }
   };
 

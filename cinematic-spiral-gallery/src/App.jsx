@@ -20,7 +20,7 @@ export default function App() {
   const [isStandalone, setIsStandalone] = useState(() => {
     if (typeof window !== 'undefined') {
       return (
-        window.location.search.includes('app=1') ||
+        window.location.search.includes('source=pwa') ||
         window.matchMedia('(display-mode: standalone)').matches ||
         window.navigator.standalone === true
       );
@@ -42,6 +42,20 @@ export default function App() {
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
+
+  // When launched from Home Screen as standalone installed PWA: render pure full-screen native HelpU App
+  if (isStandalone) {
+    return (
+      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100dvh', background: '#FFFFFF', zIndex: 99999, overflow: 'hidden' }}>
+        <iframe
+          src="https://help-u-kohl.vercel.app/"
+          style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
+          allow="geolocation; camera; microphone; clipboard-read; clipboard-write; autoplay"
+          title="HelpU App"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="cinematic-app">
