@@ -43,20 +43,6 @@ export default function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // When launched from Home Screen as standalone installed PWA: render pure full-screen native app
-  if (isStandalone) {
-    return (
-      <div style={{ position: 'fixed', inset: 0, width: '100vw', height: '100dvh', background: '#FFF8F3', zIndex: 99999, overflow: 'hidden' }}>
-        <iframe
-          src="https://help-u-kohl.vercel.app/"
-          style={{ width: '100%', height: '100%', border: 'none', display: 'block' }}
-          allow="geolocation; camera; microphone; clipboard-read; clipboard-write"
-          title="Helpu App"
-        />
-      </div>
-    );
-  }
-
   return (
     <div className="cinematic-app">
       {/* Global Interactive Light Blue Scanner Canvas Background (Active on both Desktop & Mobile) */}

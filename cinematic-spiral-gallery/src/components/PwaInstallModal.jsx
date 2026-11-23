@@ -36,9 +36,6 @@ export default function PwaInstallModal({
         className="pwa-modal-container"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Mobile Sheet Drag Indicator Bar */}
-        <div className="pwa-modal-drag-pill" />
-
         {/* Top-Right Cut/Close Button [✕] */}
         <button
           type="button"

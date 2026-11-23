@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const HELPU_PWA_TARGET_URL = 'https://help-u-kohl.vercel.app/';
+export const HELPU_PWA_TARGET_URL = '/';
 
 export function usePwaInstall() {
   const [deferredPrompt, setDeferredPrompt] = useState(null);

@@ -1,17 +1,17 @@
 {
   "name": "Helpu — Rides & Campus Connect",
   "short_name": "Helpu",
-  "description": "Verified campus carpooling and smart peer travel network for university students.",
-  "start_url": "/?pwa=1",
+  "description": "Verified campus carpooling, smart peer schedule sync and timetable matching for university students.",
+  "start_url": "/?source=pwa",
   "scope": "/",
   "display": "standalone",
   "display_override": ["standalone", "window-controls-overlay", "minimal-ui"],
   "orientation": "portrait-primary",
-  "theme_color": "#FF572E",
-  "background_color": "#FFF8F3",
+  "theme_color": "#FFFFFF",
+  "background_color": "#FFFFFF",
   "lang": "en",
   "dir": "ltr",
-  "categories": ["travel", "social", "productivity"],
+  "categories": ["travel", "social", "productivity", "education"],
   "icons": [
     {
       "src": "/pwa-192x192.png",
@@ -30,6 +30,29 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/gallery/01-dashboard.jpg",
+      "sizes": "482x1024",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "HelpU Dashboard & Slot Finder"
+    },
+    {
+      "src": "/gallery/05-poolmate-hub.jpg",
+      "sizes": "482x1024",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "PoolMate Campus Rides"
+    },
+    {
+      "src": "/gallery/09-ffcs-mate.jpg",
+      "sizes": "482x1024",
+      "type": "image/jpeg",
+      "form_factor": "narrow",
+      "label": "FFCS Mate Curriculum & Timetable"
     }
   ]
 }
